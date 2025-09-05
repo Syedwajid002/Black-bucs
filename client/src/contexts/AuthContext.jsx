@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import api from "../services/api";
+
 import axios from "axios";
 
 const AuthContext = createContext(undefined);
@@ -17,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
   // ✅ Create axios instance for reuse
   const api = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: "https://black-bucs-backend.onrender.com",
   });
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await api.post("http://localhost:5000/api/auth/login", {
+      const response = await api.post("/auth/login", {
         email,
         password,
       });
@@ -60,10 +62,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        userData
-      );
+      const response = await api.post("/auth/register", userData);
       const { token, user } = response.data;
 
       localStorage.setItem("token", token);
