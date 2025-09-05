@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
   // ✅ Create axios instance for reuse
   const api = axios.create({
-    baseURL: "https://black-bucs-backend.onrender.com/api",
+    baseURL: process.env.REACT_APP_API,
   });
 
   useEffect(() => {
