@@ -18,8 +18,8 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: "https://black-bucs.vercel.app",  // no trailing slash
-  methods: ["GET", "POST", "PUT", "DELETE"], // optional, you can restrict
+  origin: "https://black-bucs.vercel.app",  
+  methods: ["GET", "POST", "PUT", "DELETE"], 
 }));
 
 app.use(express.json());
